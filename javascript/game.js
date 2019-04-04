@@ -1,42 +1,74 @@
 $(document).ready(function () {
-    var randomNumber = Math.floor((Math.random() * 120) + 19);
-
-    console.log(randomNumber);
-
+    var randomNumber;
+    var redCrystalNumber;
+    var yellowCrystalNumber;
+    var blueCrystalNumber;
+    var greenCrystalNumber;
     var scoreCounter = 0;
     var win = 0;
     var loss = 0;
+
+
+    function randomNumberGenerator(){
+
+    
+     randomNumber = Math.floor((Math.random() * 120) + 19);
+     redCrystalNumber=Math.floor((Math.random() * 12) + 1);
+     blueCrystalNumber=Math.floor((Math.random() * 12) + 1);
+     yellowCrystalNumber=Math.floor((Math.random() * 12) + 1);
+     greenCrystalNumber=Math.floor((Math.random() * 12) + 1);
+     scoreCounter=0;
+    
+    }
+    randomNumberGenerator();
+    console.log(randomNumber);
+
+    console.log(redCrystalNumber);
+    console.log(blueCrystalNumber);
+
+    console.log(yellowCrystalNumber);
+
+    console.log(greenCrystalNumber);
+
+
     $("#randomNumber").html(randomNumber);
     
-    function scoreCheck(scoreCounter) {
+    function scoreCheck() {
+    
          console.log("your score is:"+scoreCounter);
         //  console.log("random number is:"+randomNumber);
         if (scoreCounter==randomNumber) {
             win++;
             $("#win").html("Wins:" + win);
             console.log("equal,you won!");
-            // $("#scoreCounter").text("0");
-        location.reload();
-            
-
-
+            randomNumberGenerator();
+            $("#randomNumber").html(randomNumber);
+            console.log(scoreCounter);
+             $("#scoreCounter").html(scoreCounter);
+        
         }
         else {
             if (scoreCounter > randomNumber) {
                 loss++;
                 $("#loss").html("Losses:"+ loss);
                 console.log("You loss"+ loss);
-                //  $("#scoreCounter").text("0");
-                 location.reload();
+                randomNumberGenerator();
+                $("#randomNumber").html(randomNumber);
+                console.log(scoreCounter);
 
+                 $("#scoreCounter").html(scoreCounter);
+
+
+
+
+        
             }
         }
     };
-    $(".btn").click(function () {
-        var crystalNumber = Math.floor((Math.random() * 12) + 1);
-        console.log("click" + crystalNumber);
+    $("#redCrystal").click(function () {
+        console.log("redclick:"+redCrystalNumber);
         console.log(scoreCounter);
-        scoreCounter += crystalNumber;
+        scoreCounter += redCrystalNumber;
         console.log("score" + scoreCounter);
         $("#scoreCounter").text(scoreCounter);
         scoreCheck(scoreCounter);
@@ -44,45 +76,42 @@ $(document).ready(function () {
 
 
     });
-    // $("#blueCrystal").click(function () {
-    //     var crystalNumber = Math.floor((Math.random() * 12) + 1);
-    //     console.log("blueclick" + crystalNumber);
-    //     scoreCounter += crystalNumber;
-    //     console.log("score" + scoreCounter);
-    //     $("#scoreCounter").html(scoreCounter);
-    //     scoreCheck(scoreCounter);
-    //     console.log("calling");
+    $("#blueCrystal").click(function () {
+        console.log("blueclick:"+blueCrystalNumber);
+        scoreCounter += blueCrystalNumber;
+        console.log("score" + scoreCounter);
+        $("#scoreCounter").html(scoreCounter);
+        scoreCheck(scoreCounter);
+        console.log("calling");
 
-    // });
+    });
 
-    // $("#greenCrystal").click(function () {
-    //     var crystalNumber = Math.floor((Math.random() * 12) + 1);
-    //     console.log("greenclick" + crystalNumber);
-    //     scoreCounter += crystalNumber;
-    //     console.log("score" + scoreCounter);
-    //     $("#scoreCounter").html(scoreCounter);
-    //     scoreCheck(scoreCounter);
-    //     console.log("calling");
+    $("#greenCrystal").click(function () {
+        console.log("greenclick:"+ greenCrystalNumber);
+        scoreCounter += greenCrystalNumber;
+        console.log("score" + scoreCounter);
+        $("#scoreCounter").html(scoreCounter);
+        scoreCheck(scoreCounter);
+        console.log("calling");
 
 
 
 
-    // });
+    });
 
-    // $("#yellowCrystal").click(function () {
-    //     var crystalNumber = Math.floor((Math.random() * 12) + 1);
+    $("#yellowCrystal").click(function () {
 
-    //     console.log("yellowclick" + crystalNumber);
-    //     scoreCounter += crystalNumber;
-    //     console.log("score" + scoreCounter);
-    //     $("#scoreCounter").html(scoreCounter);
-    //     scoreCheck(scoreCounter);
-    //     console.log("calling");
-
+        console.log("yellowclick:"+yellowCrystalNumber);
+        scoreCounter += yellowCrystalNumber;
+        console.log("score" + scoreCounter);
+        $("#scoreCounter").html(scoreCounter);
+        scoreCheck(scoreCounter);
+        console.log("calling");
 
 
 
-    // });
+
+    });
 
 
 
